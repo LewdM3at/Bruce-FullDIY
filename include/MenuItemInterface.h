@@ -34,9 +34,9 @@ public:
     }
 
     void drawArrows(float scale = 1) {
-        tft.fillRect(arrowAreaX, iconAreaY, arrowAreaW, iconAreaH, bruceConfig.bgColor);
+        tft.fillRect(arrowAreaX + 5, iconAreaY + 5, arrowAreaW - 5, iconAreaH - 5, bruceConfig.bgColor);
         tft.fillRect(
-            tftWidth - arrowAreaX - arrowAreaW, iconAreaY, arrowAreaW, iconAreaH, bruceConfig.bgColor
+            tftWidth - arrowAreaX - arrowAreaW - 6, iconAreaY + 2, arrowAreaW, iconAreaH - 12, bruceConfig.bgColor
         );
 
         int arrowSize = scale * 10;
@@ -91,9 +91,9 @@ public:
 
         tft.setTextSize(FM);
         tft.drawPixel(0, 0, 0);
-        tft.fillRect(arrowAreaX, titleY, tftWidth - 2 * arrowAreaX, LH * FM, bruceConfig.bgColor);
+        tft.fillRect(arrowAreaX + 7, titleY - 10, tftWidth - 2 * arrowAreaX - 31, LH * FM, bruceConfig.bgColor);
         int nchars = (tftWidth - 16) / (LW * FM);
-        tft.drawCentreString(getName().substring(0, nchars), iconCenterX, titleY, 1);
+        tft.drawCentreString(getName().substring(0, nchars), iconCenterX, titleY - 10, 1);
     }
 
 protected:
@@ -118,7 +118,7 @@ protected:
     MenuItemInterface(const String &name) : _name(name) {}
 
     void clearIconArea(void) {
-        tft.fillRect(iconAreaX, iconAreaY, iconAreaW, iconAreaH, bruceConfig.bgColor);
+        tft.fillRect(iconAreaX, iconAreaY, iconAreaW, iconAreaH - 10, bruceConfig.bgColor);
     }
     void clearImgArea(void) { tft.fillRect(7, 27, tftWidth - 14, tftHeight - 34, bruceConfig.bgColor); }
     void resetCoordinates(void) {
