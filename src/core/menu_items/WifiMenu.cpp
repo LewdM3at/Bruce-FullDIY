@@ -40,9 +40,9 @@ void WifiMenu::optionsMenu() {
     returnToMenu = false;
     options.clear();
     if (isWebUIActive) {
-        drawMainBorderWithTitle("WiFi", true);
+        drawMainBorderWithTitle("Wi-Fi", true);
         padprintln("");
-        padprintln("Starting a Wifi function will probably make the WebUI stop working");
+        padprintln("Starting a Wi-Fi function will probably make the WebUI stop working");
         padprintln("");
         padprintln("Sel: to continue");
         padprintln("Any key: to Menu");
@@ -54,18 +54,18 @@ void WifiMenu::optionsMenu() {
     }
     if (WiFi.status() != WL_CONNECTED) {
         options = {
-            {"Connect to Wifi", lambdaHelper(wifiConnectMenu, WIFI_STA)},
-            {"Start WiFi AP", [=]() {
+            {"Connect to Wi-Fi", lambdaHelper(wifiConnectMenu, WIFI_STA)},
+            {"Start Wi-Fi AP", [=]() {
                  wifiConnectMenu(WIFI_AP);
                  displayInfo("pwd: " + bruceConfig.wifiAp.pwd, true);
              }},
         };
     }
-    if (WiFi.getMode() != WIFI_MODE_NULL) { options.push_back({"Turn Off WiFi", wifiDisconnect}); }
+    if (WiFi.getMode() != WIFI_MODE_NULL) { options.push_back({"Turn Off Wi-Fi", wifiDisconnect}); }
     if (WiFi.getMode() == WIFI_MODE_STA || WiFi.getMode() == WIFI_MODE_APSTA) {
         options.push_back({"AP info", displayAPInfo});
     }
-    options.push_back({"Wifi Atks", wifi_atk_menu});
+    options.push_back({"Wi-Fi Atks", wifi_atk_menu});
     options.push_back({"Evil Portal", [=]() {
                            if (isWebUIActive || server) {
                                stopWebUi();
@@ -108,18 +108,18 @@ void WifiMenu::optionsMenu() {
     options.push_back({"Config", [this]() { configMenu(); }});
     addOptionToMainMenu();
 
-    loopOptions(options, MENU_TYPE_SUBMENU, "WiFi");
+    loopOptions(options, MENU_TYPE_SUBMENU, "Wi-Fi");
 }
 
 void WifiMenu::configMenu() {
     std::vector<Option> wifiOptions;
 
     wifiOptions.push_back({"Change MAC", wifiMACMenu});
-    wifiOptions.push_back({"Add Evil Wifi", addEvilWifiMenu});
-    wifiOptions.push_back({"Remove Evil Wifi", removeEvilWifiMenu});
+    wifiOptions.push_back({"Add Evil Wi-Fi", addEvilWifiMenu});
+    wifiOptions.push_back({"Remove Evil Wi-Fi", removeEvilWifiMenu});
 
     // Evil Wifi Settings submenu (unchanged)
-    wifiOptions.push_back({"Evil Wifi Settings", [this]() {
+    wifiOptions.push_back({"Evil Wi-Fi Settings", [this]() {
                                std::vector<Option> evilOptions;
 
                                evilOptions.push_back({"Password Mode", setEvilPasswordMode});
@@ -129,7 +129,7 @@ void WifiMenu::configMenu() {
                                evilOptions.push_back({"Allow /ssid access", setEvilAllowSetSsid});
                                evilOptions.push_back({"Display endpoints", setEvilAllowEndpointDisplay});
                                evilOptions.push_back({"Back", [this]() { configMenu(); }});
-                               loopOptions(evilOptions, MENU_TYPE_SUBMENU, "Evil Wifi Settings");
+                               loopOptions(evilOptions, MENU_TYPE_SUBMENU, "Evil Wi-Fi Settings");
                            }});
 
     // NEW: Show Hidden Networks toggle
@@ -150,7 +150,7 @@ void WifiMenu::configMenu() {
         wifiOptions.push_back(opt);
     }
     wifiOptions.push_back({"Back", [this]() { optionsMenu(); }});
-    loopOptions(wifiOptions, MENU_TYPE_SUBMENU, "WiFi Config");
+    loopOptions(wifiOptions, MENU_TYPE_SUBMENU, "Wi-Fi Config");
 }
 
 void WifiMenu::drawIconImg() {
