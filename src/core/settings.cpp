@@ -1532,7 +1532,7 @@ void setTheme() {
     loopOptions(options);
     if (fs == nullptr) return;
 
-    String filepath = loopSD(*fs, true, "JSON");
+    String filepath = loopSD(*fs, true, "JSON", "/Themes"); // Added "/Themes" so that "Select Theme" automatically opens the folder where the Themes are located
     if (bruceConfig.openThemeFile(fs, filepath, true)) {
         bruceConfig.themePath = filepath;
         if (fs == &LittleFS) bruceConfig.theme.fs = 1;
