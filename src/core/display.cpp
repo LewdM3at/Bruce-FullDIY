@@ -766,31 +766,31 @@ void drawStatusBar() {
     uint8_t bat_margin = 85;
     if (bat > 0) {
         drawBatteryStatus(bat);
-    } else bat_margin = 26;
+    } else bat_margin = 34; // increase battery margin for custom border
     if (sdcardMounted) {
         tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
         tft.setTextSize(FP);
-        tft.drawString("SD", tftWidth - (bat_margin), 12);
+        tft.drawString("SD", tftWidth - (bat_margin + 20 * i), 35);     // shift positions of status icons around for custom border
         i++;
     } // Indication for SD card on screen
     if (gpsConnected) {
-        drawGpsSmall(tftWidth - (bat_margin + 23 * i), 7);
+        drawGpsSmall(tftWidth - (bat_margin + 23 * i), 30);
         i++;
     }
     if (WiFi.getMode()) {
-        drawWifiSmall(tftWidth - (bat_margin + 23 * i), 7);
+        drawWifiSmall(tftWidth - (bat_margin + 23 * i), 30);
         i++;
     } // Draw Wifi Symbol beside battery
     if (isWebUIActive) {
-        drawWebUISmall(tftWidth - (bat_margin + 23 * i), 7);
+        drawWebUISmall(tftWidth - (bat_margin + 23 * i), 30);
         i++;
     } // Draw Wifi Symbol beside battery
     if (BLEConnected) {
-        drawBLESmall(tftWidth - (bat_margin + 23 * i), 7);
+        drawBLESmall(tftWidth - (bat_margin + 23 * i), 30);
         i++;
     } // Draw BLE beside Wifi
     if (isConnectedWireguard) {
-        drawWireguardStatus(tftWidth - (bat_margin + 24 * i), 7);
+        drawWireguardStatus(tftWidth - (bat_margin + 24 * i), 30);
         i++;
     } // Draw Wg bedide BLE, if the others exist, if not, beside battery
 
