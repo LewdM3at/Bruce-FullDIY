@@ -168,7 +168,7 @@ void TagOMatic::display_banner() {
     tft.setTextSize(FP);
     padprintln("");
     tft.setTextColor(getColorVariation(bruceConfig.priColor), bruceConfig.bgColor);
-    padprintln("Press [OK] to change mode.");
+    padprintln("Press [OK] to change mode.", 3);
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
     padprintln("");
 }
