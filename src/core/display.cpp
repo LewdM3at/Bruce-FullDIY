@@ -1079,14 +1079,15 @@ void drawStatusBar() {
     }
 
     if (clock_set) {
-        setTftDisplay(26, 43, bruceConfig.priColor, 1, bruceConfig.bgColor);
+        int clock_fontsize = 1;
+        setTftDisplay(26, 43, bruceConfig.priColor, clock_fontsize, bruceConfig.bgColor);
 #if defined(HAS_RTC)
         _rtc.GetTime(&_time);
         snprintf(timeStr, sizeof(timeStr), "%02d:%02d", _time.Hours, _time.Minutes);
         tft.print(timeStr);
 #else
         updateTimeStr(rtc.getTimeStruct());
-        tft.fillRect(26, 43, 100, 15, bruceConfig.bgColor);
+        tft.fillRect(26, 43, 100, clock_fontsize * LH, bruceConfig.bgColor);
         tft.print(timeStr);
 #endif
     } else {
