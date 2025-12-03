@@ -836,9 +836,9 @@ void drawStatusBar() {
         tft.drawLine(428, 20, 433, 20, 0xF602);
         tft.drawLine(307, 16, 300, 9, 0xF602);
         tft.drawLine(299, 9, 230, 9, 0xF602);
-        tft.drawLine(325, 45, 346, 24, 0xF602);
+        tft.drawLine(331, 39, 346, 24, 0xF602);
         tft.drawLine(346, 23, 305, 23, 0xF602);
-        tft.drawLine(325, 46, 312, 46, 0xF602);
+        tft.drawLine(331, 38, 318, 38, 0xF602);
         tft.drawLine(289, 22, 296, 22, 0xF602);
         tft.drawLine(292, 24, 298, 24, 0xF602);
         tft.drawLine(304, 24, 307, 24, 0xF602);
@@ -885,10 +885,10 @@ void drawStatusBar() {
         tft.drawLine(136, 26, 77, 26, 0xF602);
         tft.drawLine(299, 13, 300, 13, 0xF602);
         tft.drawLine(305, 19, 305, 20, 0xF602);
-        tft.drawLine(312, 47, 324, 47, 0xF602);
-        tft.drawLine(326, 45, 346, 25, 0xF602);
+        tft.drawLine(318, 39, 330, 39, 0xF602);
+        tft.drawLine(332, 39, 346, 25, 0xF602);
         tft.drawLine(193, 10, 186, 10, 0xF602);
-        tft.drawLine(229, 8, 21, 8, 0xF602);
+        tft.drawLine(232, 8, 21, 8, 0xF602);
         tft.drawLine(20, 9, 2, 27, 0xF602);
         tft.drawLine(21, 9, 3, 27, 0xF602);
         tft.drawLine(22, 9, 220, 9, 0xF602);
@@ -1076,6 +1076,7 @@ void drawStatusBar() {
         tft.drawLine(470, 72, 468, 74, 0xF602);
         tft.drawLine(470, 73, 468, 75, 0xF602);
         tft.drawLine(470, 74, 468, 76, 0xF602);
+        tft.drawLine(104, 307, 105, 307, 0xF602);
     }
 
     if (clock_set) {
