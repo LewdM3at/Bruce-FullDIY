@@ -8,7 +8,7 @@
 #include <SD.h>
 #include <globals.h>
 #define BORDER_PAD_X 10
-#define BORDER_PAD_Y 28
+#define BORDER_PAD_Y 48
 #define MENU_TYPE_MAIN 0
 #define MENU_TYPE_SUBMENU 1
 #define MENU_TYPE_REGULAR 2
