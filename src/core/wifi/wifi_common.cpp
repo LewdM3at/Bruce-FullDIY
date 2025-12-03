@@ -73,7 +73,7 @@ bool _wifiConnect(const String &ssid, int encryption) {
 bool _connectToWifiNetwork(const String &ssid, const String &pwd) {
     drawMainBorderWithTitle("WiFi Connect");
     padprintln("");
-    padprint("Connecting to: " + ssid + ".");
+    padprint("Connecting to: " + ssid + ".", 3);
     WiFi.mode(WIFI_MODE_STA);
     vTaskDelay(10 / portTICK_PERIOD_MS);
     WiFi.begin(ssid, pwd);
