@@ -133,7 +133,7 @@ void displayRedStripe(String text, uint16_t fgcolor, uint16_t bgcolor) {
     if (text.length() * LW * FM < (tftWidth - 2 * FM * LW)) size = FM;
     else size = FP;
     tft.drawPixel(0, 0, 0);
-    tft.fillRoundRect(10, tftHeight / 2 - 13, tftWidth - 20, 26, 7, bgcolor);
+    tft.fillRoundRect(30, tftHeight / 2 - 13, tftWidth - 70, 26, 7, bgcolor);
     tft.setTextColor(fgcolor, bgcolor);
     if (size == FM) {
         tft.setTextSize(FM);
