@@ -726,14 +726,14 @@ void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
     const char *firstOption =
         index - 1 >= 0 ? options[index - 1].label.c_str() : options[menuSize - 1].label.c_str();
     tft.setTextColor(bruceConfig.secColor);
-    tft.fillRect(6, middle_up, tftWidth - 12, 8 * FM, bruceConfig.bgColor);
+    tft.fillRect(20, middle_up, tftWidth - 40, 8 * FM, bruceConfig.bgColor);    // make the override rect smaller to facilitate the custom border
     tft.drawCentreString(firstOption, tftWidth / 2, middle_up, SMOOTH_FONT);
 
     // Selected item
     int selectedTextSize = options[index].label.length() <= tftWidth / (LW * FG) - 1 ? FG : FM;
     tft.setTextSize(selectedTextSize);
     tft.setTextColor(bruceConfig.priColor);
-    tft.fillRect(6, middle - FG * LH / 2 - 1, tftWidth - 12, FG * LH + 5, bruceConfig.bgColor);
+    tft.fillRect(20, middle - FG * LH / 2 - 1, tftWidth - 40, FG * LH + 5, bruceConfig.bgColor); // make the override rect smaller to facilitate the custom border
     tft.drawCentreString(options[index].label, tftWidth / 2, middle - selectedTextSize * LH / 2, SMOOTH_FONT);
     tft.drawFastHLine(
         tftWidth / 2 - strlen(options[index].label.c_str()) * selectedTextSize * LW / 2,
@@ -746,7 +746,7 @@ void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
         index + 1 < menuSize ? options[index + 1].label.c_str() : options[0].label.c_str();
     tft.setTextSize(FM);
     tft.setTextColor(bruceConfig.secColor);
-    tft.fillRect(6, middle_down, tftWidth - 12, 8 * FM, bruceConfig.bgColor);
+    tft.fillRect(20, middle_down, tftWidth - 40, 8 * FM, bruceConfig.bgColor);   // make the override rect smaller to facilitate the custom border
     tft.drawCentreString(thirdOption, tftWidth / 2, middle_down, SMOOTH_FONT);
 
     tft.fillRect(tftWidth - 5, 0, 5, tftHeight, bruceConfig.bgColor);
