@@ -626,32 +626,32 @@ void capture_handshake(String tssid, String mac, uint8_t channel) {
             drawMainBorderWithTitle("Handshake Capture");
             tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
             padprintln("");
-            padprintln("SSID: " + tssid);
-            padprintln("BSSID: " + mac);
-            padprintln("Security: " + encryptionTypeStr);
+            padprintln("SSID: " + tssid, 3);
+            padprintln("BSSID: " + mac, 3);
+            padprintln("Security: " + encryptionTypeStr, 3);
             padprintln("");
 
             // Show console status
             if (hasBeacons && hasEAPOL) {
                 tft.setTextColor(TFT_GREEN, bruceConfig.bgColor);
-                padprintln("Status: CAPTURED!");
+                padprintln("Status: CAPTURED!", 3);
                 tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
             } else if (hasBeacons && !hasEAPOL) {
                 tft.setTextColor(TFT_YELLOW, bruceConfig.bgColor);
-                padprintln("Status: Beacon captured");
-                padprintln("        Waiting EAPOL...");
+                padprintln("Status: Beacon captured", 3);
+                padprintln("        Waiting EAPOL...", 3);
                 tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
             } else {
                 tft.setTextColor(TFT_YELLOW, bruceConfig.bgColor);
-                padprintln("Status: Waiting...");
+                padprintln("Status: Waiting...", 3);
                 tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
             }
 
             padprintln("");
-            padprintln("Deauth sent: " + String(deauthCount));
+            padprintln("Deauth sent: " + String(deauthCount), 3);
             padprintln("");
-            tft.drawString("Press " + String(BTN_ALIAS) + " to send deauth", 10, tftHeight - 35);
-            tft.drawString("Press Back to exit", 10, tftHeight - 20);
+            tft.drawString("Press " + String(BTN_ALIAS) + " to send deauth", 30, tftHeight - 60);
+            tft.drawString("Press Back to exit", 30, tftHeight - 45);
 
             // reset redraw flag
             needRedraw = false;
