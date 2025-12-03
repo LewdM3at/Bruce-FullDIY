@@ -708,8 +708,8 @@ void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
     tft.setTextSize(FP);
     tft.drawPixel(0, 0, 0);
-    tft.fillRect(6, 30, tftWidth - 12, 8 * FP, bruceConfig.bgColor);
-    tft.drawString(title, 12, 30);
+    //tft.fillRect(6, 30, tftWidth - 12, 8 * FP, bruceConfig.bgColor);  // Remove draw override rect
+    tft.drawString(title, 26, 52);  // Move the title string because of custom border
 
     // middle of the drawing area
     int middle = 25 /*status*/ + (tftHeight - 30 /*status + bottom margin*/) / 2;
