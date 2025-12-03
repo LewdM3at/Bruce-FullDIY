@@ -1,9 +1,9 @@
 #include "scrollableTextArea.h"
 #define _scrollBuffer tft
 ScrollableTextArea::ScrollableTextArea(const String &title)
-    : firstVisibleLine{0}, _redraw{true}, _title(title), _fontSize(FP), _startX(BORDER_PAD_X),
-      _startY(BORDER_PAD_Y), _width(tftWidth - 2 * BORDER_PAD_X),
-      _height(tftHeight - BORDER_PAD_X - BORDER_PAD_Y) {
+    : firstVisibleLine{0}, _redraw{true}, _title(title), _fontSize(FP), _startX(BORDER_PAD_X + 20),
+      _startY(BORDER_PAD_Y), _width(tftWidth - 2 * BORDER_PAD_X - 35),
+      _height(tftHeight - BORDER_PAD_X - BORDER_PAD_Y - 25) {
     drawMainBorder();
 
     if (!_title.isEmpty()) {
