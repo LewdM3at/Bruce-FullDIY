@@ -800,7 +800,7 @@ void drawStatusBar() {
     }
 
     if (clock_set) {
-        setTftDisplay(12, 12, bruceConfig.priColor, 1, bruceConfig.bgColor);
+        setTftDisplay(26, 43, bruceConfig.priColor, 1, bruceConfig.bgColor);
 #if defined(HAS_RTC)
         _rtc.GetTime(&_time);
         snprintf(timeStr, sizeof(timeStr), "%02d:%02d", _time.Hours, _time.Minutes);
@@ -810,8 +810,8 @@ void drawStatusBar() {
         tft.print(timeStr);
 #endif
     } else {
-        setTftDisplay(12, 12, bruceConfig.priColor, 1, bruceConfig.bgColor);
-        tft.print("BRUCE " + String(BRUCE_VERSION));
+        setTftDisplay(26, 43, bruceConfig.priColor, 1, bruceConfig.bgColor);
+        tft.print("DAEMON " + String(BRUCE_VERSION));
     }
 }
 
