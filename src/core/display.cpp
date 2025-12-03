@@ -1086,6 +1086,7 @@ void drawStatusBar() {
         tft.print(timeStr);
 #else
         updateTimeStr(rtc.getTimeStruct());
+        tft.fillRect(26, 43, 100, 15, bruceConfig.bgColor);
         tft.print(timeStr);
 #endif
     } else {
