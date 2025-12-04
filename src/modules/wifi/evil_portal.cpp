@@ -231,24 +231,24 @@ void EvilPortal::drawScreen() {
     padprintln("");
     if (bruceConfig.evilPortalEndpoints.showEndpoints) {
         if (bruceConfig.evilPortalEndpoints.allowGetCreds) {
-            padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.getCredsEndpoint + " -> get creds");
+            padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.getCredsEndpoint + " -> get creds", 3);
         } else {
-            padprintln("-> cred access disabled");
+            padprintln("-> cred access disabled"), 3;
         }
         if (bruceConfig.evilPortalEndpoints.allowSetSsid) {
-            padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.setSsidEndpoint + " -> set ssid");
+            padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.setSsidEndpoint + " -> set ssid", 3);
         } else {
-            padprintln("-> SSID change disabled");
+            padprintln("-> SSID change disabled", 3);
         }
     } else {
-        padprintln("Endpoints hidden");
+        padprintln("Endpoints hidden", 3);
     }
     padprintln("");
 
     if (!_verifyPwd) {
-        padprint("Victims: " + String(totalCapturedCredentials));
+        padprint("Victims: " + String(totalCapturedCredentials), 3);
     } else {
-        padprint("Attempt: " + String(totalCapturedCredentials));
+        padprint("Attempt: " + String(totalCapturedCredentials), 3);
     }
     String passMode = "";
     switch (bruceConfig.evilPortalPasswordMode) {
@@ -257,7 +257,7 @@ void EvilPortal::drawScreen() {
         case HIDE_PASSWORD: passMode = "*hidden*"; break;
         case SAVE_LENGTH: passMode = "Length only"; break;
     }
-    padprintln("Pwd mode: " + passMode);
+    padprintln("Pwd mode: " + passMode, 3);
     printLastCapturedCredential();
 
     printDeauthStatus();
@@ -267,10 +267,10 @@ void EvilPortal::printLastCapturedCredential() {
     while (lastCred.length()) {
         int newlineIndex = lastCred.indexOf('\n');
         if (newlineIndex > -1) {
-            padprintln(lastCred.substring(0, newlineIndex));
+            padprintln(lastCred.substring(0, newlineIndex), 3);
             lastCred.remove(0, newlineIndex + 1);
         } else {
-            padprint(lastCred);
+            padprint(lastCred, 3);
             lastCred = "";
         }
     }
