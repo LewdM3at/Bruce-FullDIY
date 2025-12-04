@@ -233,7 +233,7 @@ void EvilPortal::drawScreen() {
         if (bruceConfig.evilPortalEndpoints.allowGetCreds) {
             padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.getCredsEndpoint + " -> get creds", 3);
         } else {
-            padprintln("-> cred access disabled"), 3;
+            padprintln("-> cred access disabled", 3);
         }
         if (bruceConfig.evilPortalEndpoints.allowSetSsid) {
             padprintln("-> " + apIp + bruceConfig.evilPortalEndpoints.setSsidEndpoint + " -> set ssid", 3);
@@ -289,7 +289,7 @@ void EvilPortal::printDeauthStatus() {
 void EvilPortal::loadCustomHtml() {
     getFsStorage(fsHtmlFile);
 
-    htmlFileName = loopSD(*fsHtmlFile, true, "HTML", "BruceHTMLs");     // Start file explorer inside of root/BruceHTMLs
+    htmlFileName = loopSD(*fsHtmlFile, true, "HTML", "/BruceHTMLs");     // Start file explorer inside of root/BruceHTMLs
     String fileBaseName =
         htmlFileName.substring(htmlFileName.lastIndexOf("/") + 1, htmlFileName.length() - 5);
     fileBaseName.toLowerCase();

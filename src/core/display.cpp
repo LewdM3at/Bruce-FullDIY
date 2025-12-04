@@ -1149,7 +1149,7 @@ void printSubtitle(String subtitle, bool withLine) {
 
 void printFootnote(String text) {
     tft.setTextSize(FP);
-    tft.drawRightString(text, tftWidth - BORDER_PAD_X - 15, tftHeight - BORDER_PAD_X - FP * LH - 40, SMOOTH_FONT);
+    tft.drawRightString(text, tftWidth - BORDER_PAD_X - 25, tftHeight - BORDER_PAD_X - FP * LH - 30, SMOOTH_FONT);
 }
 
 void printCenterFootnote(String text) {
