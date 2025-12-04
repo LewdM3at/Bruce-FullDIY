@@ -42,10 +42,10 @@ void WifiMenu::optionsMenu() {
     if (isWebUIActive) {
         drawMainBorderWithTitle("Wi-Fi", true);
         padprintln("");
-        padprintln("Starting a Wi-Fi function will probably make the WebUI stop working");
+        padprintln("Starting a Wi-Fi function will probably make the WebUI stop working", 3);
         padprintln("");
-        padprintln("Sel: to continue");
-        padprintln("Any key: to Menu");
+        padprintln("Sel: to continue", 3);
+        padprintln("Any key: to Menu", 3);
         while (1) {
             if (check(SelPress)) { break; }
             if (check(AnyKeyPress)) { return; }
