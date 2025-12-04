@@ -450,6 +450,8 @@ ScanNets:
 ** @brief: Capture handshake for a selected network
 **          (redraws only when deauth is sent or when a handshake/EAPOL is captured)
 ***************************************************************************************/
+uint8_t targetBssid[6]; // Just the target AP MAC to pass onto sniff to filter out EAPOL frames of unrelated APs
+
 void capture_handshake(String tssid, String mac, uint8_t channel) {
 
     // Reset handshake tracker for new capture
@@ -469,6 +471,7 @@ void capture_handshake(String tssid, String mac, uint8_t channel) {
 
     // Set the target record for deauth
     memcpy(ap_record.bssid, bssid_array, 6);
+    memcpy(targetBssid, bssid_array, 6);
     ap_record.primary = channel;
 
     String encryptionTypeStr = "Unknown";
