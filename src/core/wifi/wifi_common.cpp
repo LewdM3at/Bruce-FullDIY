@@ -195,7 +195,11 @@ bool wifiConnectMenu(wifi_mode_t mode) {
             break;
     }
 
-    if (returnToMenu) return false;
+    if (returnToMenu)
+    {
+        wifiDisconnect();
+        return false;
+    }
     return wifiConnected;
 }
 
