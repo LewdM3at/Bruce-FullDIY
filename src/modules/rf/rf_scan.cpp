@@ -382,21 +382,21 @@ void display_info(RfCodes received, int signals, bool ReadRAW, bool codesOnly, b
 
     tft.setTextColor(getColorVariation(bruceConfig.priColor), bruceConfig.bgColor);
 
-    if (!ReadRAW) padprintln("Recording: Only RCSwitch codes.");
-    else if (codesOnly) padprintln("Recording: RAW with CRC or RCSwitch.");
-    else padprintln("Recording: Any RAW signal.");
+    if (!ReadRAW) padprintln("Recording: Only RCSwitch codes.", 3);
+    else if (codesOnly) padprintln("Recording: RAW with CRC or RCSwitch.", 3);
+    else padprintln("Recording: Any RAW signal.", 3);
 
-    if (autoSave) padprintln("Auto save: Enabled");
+    if (autoSave) padprintln("Auto save: Enabled", 3);
 
-    if (bruceConfig.rfFxdFreq) padprintln("Scanning: " + String(bruceConfig.rfFreq) + " MHz");
-    else padprintln("Scanning: " + String(subghz_frequency_ranges[bruceConfig.rfScanRange]));
+    if (bruceConfig.rfFxdFreq) padprintln("Scanning: " + String(bruceConfig.rfFreq) + " MHz", 3);
+    else padprintln("Scanning: " + String(subghz_frequency_ranges[bruceConfig.rfScanRange]), 3);
 
-    padprintln("Total signals found: " + String(signals));
+    padprintln("Total signals found: " + String(signals), 3);
 
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
 
     padprintln("");
-    padprintln("Press [NEXT] for options.");
+    padprintln("Press [NEXT] for options.", 3);
 }
 
 void display_signal_data(RfCodes received) {
@@ -409,29 +409,29 @@ void display_signal_data(RfCodes received) {
     while (ss >> palavra) transitions++;
 
     if (received.preset != "")
-        padprintln("Protocol: " + String(received.protocol) + "(" + received.preset + ")");
-    else padprintln("Protocol: " + String(received.protocol));
+        padprintln("Protocol: " + String(received.protocol) + "(" + received.preset + ")", 3);
+    else padprintln("Protocol: " + String(received.protocol), 3);
 
     if (received.key > 0) {
         decimalToHexString(received.key, hexString);
         if (received.protocol == "RAW") {
-            padprintln("Lenght: " + String(received.Bit) + " transitions");
+            padprintln("Lenght: " + String(received.Bit) + " transitions", 3);
             // tft.setCursor(tft.getCursorX(), tft.getCursorY() + 2);
-            padprintln("Record length: " + String(transitions) + " transitions");
+            padprintln("Record length: " + String(transitions) + " transitions", 3);
         } else {
-            padprintln("Lenght: " + String(received.Bit) + " bits");
+            padprintln("Lenght: " + String(received.Bit) + " bits", 3);
             const char *b = dec2binWzerofill(received.key, min(received.Bit, 40));
             // tft.setCursor(tft.getCursorX(), tft.getCursorY() + 2);
-            padprintln("Binary: " + String(b));
+            padprintln("Binary: " + String(b), 3);
         }
     } else {
         strcpy(hexString, "No code identified");
-        padprintln("Lenght: No code identified");
-        padprintln("Record length: " + String(transitions) + " transitions");
+        padprintln("Lenght: No code identified", 3);
+        padprintln("Record length: " + String(transitions) + " transitions", 3);
     }
 
-    if (received.protocol == "RAW") padprintln("CRC: " + String(hexString));
-    else padprintln("Key: " + String(hexString));
+    if (received.protocol == "RAW") padprintln("CRC: " + String(hexString), 3);
+    else padprintln("Key: " + String(hexString), 3);
 
     // if (bruceConfig.rfModule == CC1101_SPI_MODULE) {
     //     int rssi = ELECHOUSE_cc1101.getRssi();
