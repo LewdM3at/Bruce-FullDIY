@@ -622,9 +622,9 @@ void ibeacon(const char *DeviceName, const char *BEACON_UUID, int ManufacturerId
 
     drawMainBorderWithTitle("iBeacon");
     padprintln("");
-    padprintln("UUID:" + String(BEACON_UUID));
+    padprintln("UUID:" + String(BEACON_UUID), 3);
     padprintln("");
-    padprintln("Press Any key to STOP.");
+    padprintln("Press Any key to STOP.", 3);
 
     while (!check(AnyKeyPress)) {
         // max_loops -= 1;
