@@ -135,9 +135,9 @@ void IrRead::begin() {
 
     display_banner();
     if (quickloop) {
-        padprintln("Waiting for signal of button: " + String(quickButtons[button_pos]));
+        padprintln("Waiting for signal of button: " + String(quickButtons[button_pos]), 3);
     } else {
-        padprintln("Waiting for signal...");
+        padprintln("Waiting for signal...", 3);
     }
 
     tft.println("");
@@ -153,13 +153,12 @@ void IrRead::cls() {
 }
 
 void IrRead::display_banner() {
-    cls();
-    tft.setTextSize(FM);
-    padprintln("IR Read");
+    drawMainBorderWithTitle("IR Read");
 
     tft.setTextSize(FP);
-    padprintln("--------------");
-    padprintln("Signals captured: " + String(signals_read));
+    padprintln("");
+    padprintln("");
+    padprintln("Signals captured: " + String(signals_read), 3);
     tft.println("");
 }
 
@@ -167,11 +166,13 @@ void IrRead::display_btn_options() {
     tft.println("");
     tft.println("");
     if (_read_signal) {
-        padprintln("Press [PREV] to discard signal");
-        padprintln("Press [NEXT] to save signal");
+        padprintln("Press [PREV] to discard signal", 3);
+        padprintln("Press [NEXT] to save signal", 3);
     }
-    if (signals_read > 0) { padprintln("Press [OK]   to save device"); }
-    padprintln("Press [ESC]  to exit");
+    if (signals_read > 0) { padprintln("Press [OK]   to save device", 3); }
+    padprintln("");
+    padprintln("");
+    padprintln("Press [ESC]  to exit", 3);
 }
 
 void IrRead::read_signal() {
@@ -185,7 +186,7 @@ void IrRead::read_signal() {
     display_banner();
 
     // Dump of signal details
-    padprint("RAW Data Captured:");
+    padprint("RAW Data Captured:", 3);
     String raw_signal = parse_raw_signal();
     tft.println(
         raw_signal.substring(0, 45) + (raw_signal.length() > 45 ? "..." : "")
