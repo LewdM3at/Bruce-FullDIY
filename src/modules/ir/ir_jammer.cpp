@@ -125,9 +125,9 @@ void renderModeSettings(JammerState &state, int &curY, int ySpacing) {
             tft.setTextColor(
                 (state.settingIndex == 3) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("TIMING: ");
+            padprint("TIMING: ", 3);
             tft.print(String(state.markTiming));
-            tft.println(" us    ");
+            tft.println(" us        ");
             break;
 
         case ENHANCED_BASIC:
@@ -137,26 +137,27 @@ void renderModeSettings(JammerState &state, int &curY, int ySpacing) {
             tft.setTextColor(
                 (state.settingIndex == 3) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("MARK: ");
+            padprint("MARK: ", 3);
             tft.print(String(state.markTiming));
-            tft.println(" us    ");
+            tft.println(" us        ");
 
             curY += ySpacing;
             tft.setCursor(10, curY);
             tft.setTextColor(
                 (state.settingIndex == 4) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("SPACE: ");
+            padprint("SPACE: ", 3);
             tft.print(String(state.spaceTiming));
-            tft.println(" us    ");
+            tft.println(" us        ");
 
             curY += ySpacing;
             tft.setCursor(10, curY);
             tft.setTextColor(
                 (state.settingIndex == 5) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("POWER: ");
-            tft.println(String(state.jamDensity));
+            padprint("POWER: ", 3);
+            tft.print(String(state.jamDensity));
+            tft.println("          ");
             break;
 
         case SWEEP:
@@ -166,34 +167,36 @@ void renderModeSettings(JammerState &state, int &curY, int ySpacing) {
             tft.setTextColor(
                 (state.settingIndex == 3) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("MIN: ");
+            padprint("MIN: ", 3);
             tft.print(String(state.minTiming));
-            tft.println(" us    ");
+            tft.println(" us        ");
 
             curY += ySpacing;
             tft.setCursor(10, curY);
             tft.setTextColor(
                 (state.settingIndex == 4) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("MAX: ");
+            padprint("MAX: ", 3);
             tft.print(String(state.maxTiming));
-            tft.println(" us    ");
+            tft.println(" us        ");
 
             curY += ySpacing;
             tft.setCursor(10, curY);
             tft.setTextColor(
                 (state.settingIndex == 5) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("SPEED: ");
-            tft.println(String(state.sweepSpeed));
+            padprint("SPEED: ", 3);
+            tft.print(String(state.sweepSpeed));
+            tft.println("          ");
 
             curY += ySpacing;
             tft.setCursor(10, curY);
             tft.setTextColor(
                 (state.settingIndex == 6) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("POWER: ");
-            tft.println(String(state.jamDensity));
+            padprint("POWER: ", 3);
+            tft.print(String(state.jamDensity));
+            tft.println("          ");
             break;
 
         case RANDOM:
@@ -204,8 +207,9 @@ void renderModeSettings(JammerState &state, int &curY, int ySpacing) {
             tft.setTextColor(
                 (state.settingIndex == 3) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor
             );
-            padprint("POWER: ");
-            tft.println(String(state.jamDensity));
+            padprint("POWER: ", 3);
+            tft.print(String(state.jamDensity));
+            tft.println("          ");
             break;
     }
 }
@@ -235,7 +239,7 @@ void displayStats(JammerState &state, int x, int y) {
 
     // Display jam count
     tft.print("Jams : ");
-    tft.println(state.jamCount);
+    tft.println(String(state.jamCount));
 
     // Display runtime in MM:SS format
     tft.setCursor(tftWidth / 2, tft.getCursorY() + 5);
@@ -408,23 +412,26 @@ void renderJammerUI(JammerState &state) {
     // Full screen redraw only when necessary
     if (state.redraw) {
         // Clear content area
-        tft.fillRect(10, yStart, contentWidth, tftHeight - 55, bruceConfig.bgColor);
+        //tft.fillRect(10, yStart, contentWidth, tftHeight - 55, bruceConfig.bgColor);
 
         // Draw title
-        tft.setCursor(10, yStart);
+        //tft.setCursor(10, yStart);
         tft.setTextSize(FM);
         tft.setTextColor(TFT_CYAN, bruceConfig.bgColor);
-        padprint("IR Jammer");
+        tft.drawCentreString("IR Jammer", tftWidth / 2, 48, SMOOTH_FONT);
         tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
     }
 
     // Show activity indicator when jamming is active
     if (state.jamming_active && blinkState) {
-        tft.setCursor(tftWidth / 2, tft.getCursorY());
+
+        tft.setCursor(tftWidth - 80, tft.getCursorY() - 200);
+        tft.setTextSize(FM * 4);
         tft.setTextColor(TFT_MAGENTA, bruceConfig.bgColor);
         tft.println("*");
     } else {
-        tft.setCursor(tftWidth / 2, tft.getCursorY());
+        tft.setCursor(tftWidth - 80 , tft.getCursorY() - 200);
+        tft.setTextSize(FM * 4);
         tft.println(" ");
     }
 
@@ -433,15 +440,18 @@ void renderJammerUI(JammerState &state) {
     tft.setCursor(10, curY);
     tft.setTextSize(FP);
     tft.setTextColor((state.settingIndex == 0) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor);
-    padprint("STATUS: ");
+    padprintln("");
+    padprintln("");
+    padprintln("");
+    padprint("STATUS: ", 3);
     tft.setTextColor(state.jamming_active ? TFT_RED : TFT_WHITE, bruceConfig.bgColor);
     tft.println(state.jamming_active ? "ACTIVE " : "PAUSED ");
 
     // Display frequency setting
-    curY += ySpacing + 10;
+    curY += ySpacing + 30;
     tft.setCursor(10, curY);
     tft.setTextColor((state.settingIndex == 1) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor);
-    padprint("FREQ: ");
+    padprint("FREQ: ", 3);
     tft.print(String(getFrequency(state.current_freq_idx) / 1000));
     tft.println(" kHz    ");
 
@@ -449,8 +459,9 @@ void renderJammerUI(JammerState &state) {
     curY += ySpacing;
     tft.setCursor(10, curY);
     tft.setTextColor((state.settingIndex == 2) ? TFT_YELLOW : bruceConfig.priColor, bruceConfig.bgColor);
-    padprint("MODE: ");
-    tft.println(getModeName(state.currentMode));
+    padprint("MODE: ", 3);
+    tft.print(getModeName(state.currentMode));
+    tft.println("          ");
 
     // Display mode-specific settings
     renderModeSettings(state, curY, ySpacing);
@@ -459,15 +470,15 @@ void renderJammerUI(JammerState &state) {
     displayStats(state, rightColumnX, tftHeight / 2 - 25);
 
     // Display user instructions at the bottom of the screen
-    int instructionsY = tftHeight - 20;
-    tft.setCursor(10, instructionsY);
+    int instructionsY = tftHeight - 50;
+    tft.setCursor(30, instructionsY);
     tft.setTextSize(FP);
     tft.setTextColor(TFT_BLUE, bruceConfig.bgColor);
-    padprintln("[SEL] Change Set. | [NEXT/PREV] Adjust Val. ");
+    padprintln("[SEL] Change Set. | [NEXT/PREV] Adjust Val. ", 3);
 
     // Display exit instruction in top-right corner
     tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-    tft.setCursor(tftWidth - 70, 30);
+    tft.setCursor(tftWidth - 100, tftHeight - 50);
     tft.print("[ESC] Exit");
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
 
