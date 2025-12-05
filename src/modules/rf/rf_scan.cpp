@@ -382,6 +382,8 @@ void display_info(RfCodes received, int signals, bool ReadRAW, bool codesOnly, b
 
     tft.setTextColor(getColorVariation(bruceConfig.priColor), bruceConfig.bgColor);
 
+    padprintln("");
+
     if (!ReadRAW) padprintln("Recording: Only RCSwitch codes.", 3);
     else if (codesOnly) padprintln("Recording: RAW with CRC or RCSwitch.", 3);
     else padprintln("Recording: Any RAW signal.", 3);
