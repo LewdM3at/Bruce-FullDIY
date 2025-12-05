@@ -113,16 +113,11 @@ void RFID125::cls() {
 }
 
 void RFID125::display_banner() {
-    cls();
-    tft.setTextSize(FM);
-    padprintln("RFID 125kHz");
-    tft.setTextSize(FP);
+    drawMainBorderWithTitle("RFID 125 kHz");
 
     switch (_current_state) {
-        case READ_MODE:
-            padprintln("             READ MODE");
-            padprintln("             ---------");
-            break;
+        case READ_MODE: printSubtitle("READ MODE"); break;
+        case SAVE_MODE: printSubtitle("SAVE MODE"); break;
         // case LOAD_MODE:
         //     padprintln("             LOAD MODE");
         //     padprintln("             ---------");
@@ -143,15 +138,11 @@ void RFID125::display_banner() {
         //     padprintln("       WRITE NDEF MODE");
         //     padprintln("       ---------------");
         //     break;
-        case SAVE_MODE:
-            padprintln("             SAVE MODE");
-            padprintln("             ---------");
-            break;
     }
 
     tft.setTextSize(FP);
     padprintln("");
-    padprintln("Press [OK] to change mode.");
+    padprintln("Press [OK] to change mode.", 3);
     padprintln("");
     padprintln("");
 }
