@@ -124,7 +124,7 @@ void BLENinebot::setup() {
 
 void BLENinebot::redrawMainBorder() {
     drawMainBorder();
-    tft.drawString("-=Ninebot Tuning=-", (tftWidth / 2) - ((18 * 6) / 2), 12);
+    tft.drawCentreString("-=Ninebot Tuning=-", (tftWidth / 2), 52);
 }
 
 void BLENinebot::loop() {
