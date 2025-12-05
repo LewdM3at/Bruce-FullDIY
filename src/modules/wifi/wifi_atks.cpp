@@ -501,6 +501,7 @@ void capture_handshake(String tssid, String mac, uint8_t channel) {
             sanitizedSsid += '_';
         }
     }
+
     // If SSID was hidden/empty, use BSSID appended to filename so it's unique and descriptive
     if (sanitizedSsid.length() == 0) {
         char bssidHex[32];
