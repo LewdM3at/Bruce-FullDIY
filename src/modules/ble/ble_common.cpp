@@ -47,11 +47,11 @@ char strAddl[200];
 void ble_info(String name, String address, String signal) {
     drawMainBorder();
     tft.setTextColor(bruceConfig.priColor);
-    tft.drawCentreString("-=Information=-", tftWidth / 2, 28, SMOOTH_FONT);
-    tft.drawString("Name: " + name, 10, 48);
-    tft.drawString("Adresse: " + address, 10, 66);
-    tft.drawString("Signal: " + String(signal) + " dBm", 10, 84);
-    tft.drawCentreString("   Press " + String(BTN_ALIAS) + " to act", tftWidth / 2, tftHeight - 20, 1);
+    tft.drawCentreString("-= Information =-", tftWidth / 2, 48, SMOOTH_FONT);
+    tft.drawString("Name: " + name, 30, 76);
+    tft.drawString("Adresse: " + address, 30, 94);
+    tft.drawString("Signal: " + String(signal) + " dBm", 30, 112);
+    tft.drawCentreString("   Press " + String(BTN_ALIAS) + " to EXIT", tftWidth / 2, tftHeight - 50, 1);
 
     delay(300);
     while (!check(SelPress)) {
